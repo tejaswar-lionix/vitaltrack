@@ -1,0 +1,20 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_USER: vitaltrack
+      POSTGRES_PASSWORD: vitaltrack
+      POSTGRES_DB: vitaltrack
+    ports: ["5432:5432"]
+    volumes: [pgdata:/var/lib/postgresql/data]
+  app:
+    build: .
+    ports: ["3000:3000"]
+    environment:
+      DATABASE_URL: postgresql://vitaltrack:vitaltrack@db:5432/vitaltrack
+      NEXTAUTH_URL: http://localhost:3000
+      NEXTAUTH_SECRET: dev-secret-replace-in-prod
+    depends_on: [db]
+volumes:
+  pgdata:
