@@ -1,5 +1,11 @@
-generator client { provider = "prisma-client-js" }
-datasource db { provider = "postgresql"; url = env("DATABASE_URL") }
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
 
 model User {
   id        String   @id @default(cuid())
@@ -16,8 +22,8 @@ model Workout {
   id        String   @id @default(cuid())
   userId    String
   user      User     @relation(fields: [userId], references: [id])
-  type      String   // strength, cardio, yoga
-  duration  Int      // minutes
+  type      String
+  duration  Int
   calories  Int
   date      DateTime @default(now())
   notes     String?
@@ -40,7 +46,7 @@ model Sleep {
   userId    String
   user      User     @relation(fields: [userId], references: [id])
   hours     Float
-  quality   Int      // 1-10
+  quality   Int
   date      DateTime @default(now())
 }
 
