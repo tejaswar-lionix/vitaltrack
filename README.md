@@ -74,3 +74,5 @@ prisma/
 
 ## License
 Proprietary — Tejaswar. All Rights Reserved.
+## Changelog
+- 2026-08-31: VitalTrack v0.1.0 — 1080 fitness modules, dashboard, and telemetry
